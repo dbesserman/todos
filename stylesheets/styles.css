@@ -1,0 +1,379 @@
+@import url("meyer_reset.css");
+
+/* Comment out to make the form appear */
+
+#edit_todo,
+#modal_layer {
+  display: none;
+}
+
+html,
+body { 
+  height: 100%;
+  font: normal 16px Helvetica, Arial, sans-serif;
+}
+
+aside,
+main {
+  box-sizing: border-box;
+  padding-bottom: 400px;
+}
+
+dt {
+  display: inline-block;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+/* Aside */
+
+aside {
+  width: 335px;
+  min-height: 100%;
+  float: left;
+  background: #464f77;
+  color: #fff; /* I used white for all the aside elements since using the  #565e82 makes it very difficult to read (on my screeen) */
+  padding-top: 70px;
+  margin-right: 20px;
+  font-weight: 200;
+}
+
+aside h2 {
+  font-size: 18px;
+  line-height: 24px;
+  padding-bottom: 10px;
+}
+
+h2 .count {
+  float: right;
+  margin: 8px 0 0 0;
+  border-radius: 35%;
+  font-size: 14px;
+  width: 25px;
+  text-align: center;
+}
+
+aside li {
+  padding: 14px 0 14px 124px;
+}
+
+.active {
+  background: #383f5f;
+}
+
+.active .count {
+  background: #148fd5;
+}
+
+aside ul span {
+  float: right;
+  background: #565e82;
+  padding: 2px 6px;
+  border-radius: 100%;
+  display: inline-block;
+  height: 18px;
+}
+
+aside .count {
+  margin-right: 22px;
+}
+
+aside li.active dd.count {
+  background:  #148fd5;
+}
+
+aside h2:before {
+  display: inline-block;
+  height: 26px;
+  width: 26px;
+  position: relative;
+  top: 6px;
+  margin: 0 10px 0 88px;
+  content: "";
+}
+
+aside nav#all_todos h2:before {
+  background: url("../images/all_todos.png");
+}
+
+aside nav#completed h2:before {
+  background: url("../images/completed_large.png");
+}
+
+nav#all_todos {
+  padding-bottom: 64px;
+}
+
+/* Main */
+
+main {
+  margin-left: 335px;
+  width: auto;
+  padding: 80px 50px 0 20px;
+}
+
+#toggle_sidebar {
+  display: block;
+  margin: 22px 0 36px 0;
+}
+
+label[for="toggle_sidebar"],
+#toggle_sidebar {
+  display: none;
+}
+
+main header h1 {
+  font-size: 21px;
+  padding: 0 0 44px 0;
+}
+
+main .count {
+  margin-left: 20px;
+  border-radius: 100%;
+  background: #148fd5;
+  padding: 1px 4px;
+  font-size: 14px;
+  color: white;
+}
+
+main form {
+  color: #148fd5;
+  font-size: 16px;
+  padding-bottom: 16px;
+}
+
+main form input {
+  border: none; 
+  color: inherit;
+  background: #fff;
+  font-weight: 100;
+  font-size: 28px;
+}
+
+main dl {
+  display: block;
+  padding: 5px 0;
+  height: 30px;
+  border-top: 1px solid #fefefe; /* I can't with see #fefefe on my browser and barely in photoshop so I'll use black borders */
+}
+
+main dt:hover {
+  color: #148fd5;
+}
+
+main input[type='checkbox'] {
+  visibility: hidden; 
+}
+
+main dt label {
+  display: inline-block;
+  background: url("../images/cust_checkbox_unchecked.png");
+  content: '';
+  height: 14px;
+  width: 14px;
+  margin-right: 10px;
+}
+
+main dt.completed label {
+  background: url("../images/cust_checkbox_checked.png");
+}
+
+/* main dt:before { */
+/*   display: inline-block; */
+/*   background: url("../images/cust_checkbox_unchecked.png"); */
+/*   content: ""; */
+/*   height: 14px; */
+/*   width: 14px; */
+/*   margin: 0 14px 0 12px; */
+/* } */
+
+/* main dt.completed:before { */
+/*   background: url("../images/cust_checkbox_checked.png"); */
+/* } */
+
+main dt.completed {
+  color: #b3b3b3;
+}
+
+main dd,
+main dt,
+main dt label,
+#create_todo label,
+#create_todo input,
+aside h2,
+aside li {
+  cursor: pointer;
+}
+
+main dd,
+main dt {
+  display: inline-block;
+}
+
+main dt {
+  width: 90%;
+}
+
+main dt:hover {
+  color: #148FDE;
+}
+
+main dd {
+  height: 100%;
+}
+
+main dd:hover {
+  background: rgba(255, 0, 0, 0.4);
+  padding: 5px 3px 0 3px;
+}
+
+/* Modal */
+#edit_todo form {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  width: 576px;
+  height: 400px;
+  padding: 38px 39px 40px 31px;
+  font: 200 14px Helvetica, Arial, sans-serif;
+  background: #fff;
+  display: block;
+  top: 206px;
+  left: 50%;
+  margin-left: -288px;
+  z-index: 3;
+}
+
+#modal_layer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, .4);
+  z-index: 2;
+}
+
+#edit_todo dt,
+#edit_todo dd {
+  display: inline-block;
+}
+
+#edit_todo dt {
+  width: 88px;
+  letter-spacing: 1px;
+  margin-right: 16px;
+}
+
+#edit_todo input[type="text"],
+#edit_todo input[type="number"],
+select,
+#edit_todo textarea,
+#edit_todo input[type="submit"],
+#edit_todo input[type="button"] {
+  font: normal 14px Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+#edit_todo input[type="text"],
+#edit_todo input[type="number"],
+select,
+#edit_todo textarea {
+  border: 1px solid #b3b3b3; /* #fcfcfc */
+  font: 200 14px Helvetica, Arial, sans-serif;
+  margin-bottom: 26px;
+  border-radius: 0;
+  background: white;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#edit_todo input[type="text"],
+#edit_todo textarea {
+  -webkit-appearance: none;
+}
+
+#edit_todo input[type="text"],
+select,
+#edit_todo input[type="number"] {
+  height: 36px;
+}
+
+#edit_todo input[type="text"],
+#edit_todo textarea {
+  width: 396px;
+}
+
+
+#edit_todo textarea {
+  height: 144px;
+}
+
+#date input[type="number"],
+select {
+  width: 116px;
+  color: black;
+  /* -webkit-appearance: menulist; */
+}
+
+#edit_todo input[type="text"],
+#title::-webkit-input-placeholder {
+  color: black;
+}
+
+#date span {
+  padding: 0 9px;
+}
+
+#edit_todo input[type="submit"],
+#edit_todo input[type="button"] {
+  width: 184px;
+  height: 36px;
+  border: none;
+  background: #40a4dd;
+  font-weight: 200;
+  color: #fff;
+  border-radius: 4px;
+}
+
+#edit_todo input[type="submit"] {
+  margin: 0 18px 0 106px;
+}
+
+dt.description {
+  position: relative;
+  bottom: 146px;
+}
+
+#responsive_hamburger,
+label[for="responsive_hamburger"] {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  aside {
+    display: none;
+  }
+
+  main {
+    margin-left: 0;
+    padding-top: 0;
+  }
+
+  label[for="responsive_hamburger"] {
+    padding: 22px 0 36px 0;
+    display: block;
+    cursor: pointer;
+  }
+
+  #responsive_hamburger:checked + aside {
+    display: block;
+  }
+
+  #responsive_hamburger:checked ~ main {
+    margin-left: 330px;
+  }
+}
